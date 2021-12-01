@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <time.h>
+#include "timer.h"
 #include <stdlib.h>
 #include <openacc.h>
 
@@ -29,6 +29,9 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
     //pred[] stores the predecessor of each node
     //count gives the number of nodes seen so far
     //create the cost matrix
+
+    StartTimer();
+
     for (i = 0; i < n; i++)
         for (j = 0; j < n; j++)
             if (G[i][j] == 0)
@@ -80,4 +83,6 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
                 //printf("<-%d", j);
             } while (j != startnode);
         }
+    double runtime = GetTimer();
+    printf(" total: %f s\n", runtime / 1000);
 }
