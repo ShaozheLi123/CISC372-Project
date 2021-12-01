@@ -6,6 +6,6 @@ This project is showing parallel programming. We will compare the code running o
 
 * Requirements: No special requirements
 
-* Installation: You do not need to install anything, just use the terminal to run it to check.
+* Installation: You should install the "timer.h" to help you make sure the time, it is not in the library, but you can install in my code folder.
 
 * Configuration: I used the Bridges2 system to run it. You can use the system which you liked. 
