@@ -4,28 +4,26 @@
 #include <openacc.h>
 
 #define INFINITY 9999
-#define MAX 10
+#define MAX 15000
 
 void dijkstra(int G[MAX][MAX], int n, int startnode);
 
 int main()
 {
-    int G[MAX][MAX], i, j, n, u;
-    printf("Enter no. of vertices:");
-    scanf("%d", &n);
-    printf("\nEnter the adjacency matrix:\n");
-    for (i = 0; i < n; i++)
-        for (j = 0; j < n; j++)
-            scanf("%d", &G[i][j]);
-    printf("\nEnter the starting node:");
-    scanf("%d", &u);
+    int G[MAX][MAX];
+    int n = 15000; //number of vertices
+    for(int i = 0; i < n;i++) {
+    	for(int j = 0; j < n;j++) {
+    	    G[i][j] = rand()%100;
+    	}
+    }//set matrix
+    int u = 0;// start node
     dijkstra(G, n, u);
     return 0;
 }
 
 void dijkstra(int G[MAX][MAX], int n, int startnode)
 {
-
     int cost[MAX][MAX], distance[MAX], pred[MAX];
     int visited[MAX], count, mindistance, nextnode, i, j;
     //pred[] stores the predecessor of each node
@@ -73,13 +71,13 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
     for (i = 0; i < n; i++)
         if (i != startnode)
         {
-            printf("\nDistance of node%d=%d", i, distance[i]);
-            printf("\nPath=%d", i);
+            //printf("\nDistance of node%d=%d", i, distance[i]);
+            //printf("\nPath=%d", i);
             j = i;
             do
             {
                 j = pred[j];
-                printf("<-%d", j);
+                //printf("<-%d", j);
             } while (j != startnode);
         }
 }
