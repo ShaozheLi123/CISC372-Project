@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 #include <omp.h>
+
 
 #define INFINITY 9999
 #define MAX 10
