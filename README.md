@@ -6,6 +6,6 @@ This project is showing parallel programming. We will compare the code running o
 
 * Requirements: No special requirements
 
-* Installation: You do not need to install anything, just use the terminal to run it. 
+* Installation: You do not need to install anything, just use the terminal to run it to check.
 
 * Configuration: I used the Bridges2 system to run it. You can use the system which you liked. 
