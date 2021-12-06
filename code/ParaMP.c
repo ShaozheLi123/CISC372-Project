@@ -1,7 +1,9 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 #include <omp.h>
+#include "timer.h"
+#include <string.h>
+#include <math.h>
 
 #define INFINITY 9999
 #define MAX 15000
@@ -30,9 +32,11 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
     //count gives the number of nodes seen so far
     //create the cost matrix
     
-    clock_t tic = clock();
-
+    StartTimer();
+    
+    #pragma omp parallel for num_threads(16) //change the number in parenthesis for however many threads want to use.
     for (i = 0; i < n; i++)
+        #pragma omp parallel for num_threads(16) //change the number in parenthesis for however many threads want to use.
         for (j = 0; j < n; j++)
             if (G[i][j] == 0)
                 cost[i][j] = INFINITY;
@@ -83,6 +87,6 @@ void dijkstra(int G[MAX][MAX], int n, int startnode)
                 //printf("<-%d", j);
             } while (j != startnode);
         }
-    clock_t toc = clock();
-    printf("time=%.2f seconds\n", (double)(toc - tic)/ CLOCKS_PER_SEC);
+    double runtime = GetTimer();
+    printf("time=%.2f seconds\n", runtime/1000);
 }
